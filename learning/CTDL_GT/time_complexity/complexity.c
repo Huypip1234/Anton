@@ -28,6 +28,33 @@ int main() {
 	// -> t(n) = 3n = O(n)
 	
 	//ex3: Binary search
+	int binarySearch(a, n, x) {
+		left = 0, right = n – 1;
+		while (left <= right) {
+			mid = (left + right) / 2;
+			if (x < a[mid]) {right = mid – 1;}
+			else if (x > a[mid]) {left = mid + 1;}
+			else {return mid;}
+		}
+		return –1;
+	}
+	// -> O(log(n))
+	// Deo biet :))
 	
-	return 0;
+	//ex4: vong trong: i->j -> (n+1)/2
+	
+	//ex5:
+	int dem = 0, i, j, k, n=100;
+	for (i = 0; i < n; i++) {			// n * (i*i) * j = n* n^2 * n^2 = n^5
+		for (j = 0; j < i*i; j++) {		// (i*i) * j
+			if (1+1==2) {				// 1 + j = j
+				for (k = 0; k < j; k++) { // j
+					dem++;
+				}
+			}
+		}
+	}
+	
+
+return 0;
 }
