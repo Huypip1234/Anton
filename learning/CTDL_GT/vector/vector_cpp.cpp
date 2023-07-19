@@ -48,7 +48,7 @@ void vecExpand(Vector &vec, int newCapacity) {
     if (newCapacity <= vec.size) {
     	return;
 	}
-    T * old = vec.array;
+    T *old = vec.array;
     vec.array = new T[newCapacity];
     for (int i = 0; i < vec.size; i++) {
     	vec.array[i] = old[i];
