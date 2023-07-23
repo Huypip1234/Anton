@@ -21,36 +21,8 @@ void queueInit(Queue &q) {
 	q.back = NULL;
 	q.size = 0;
 }
-// Delete queue
-T dequeue(Queue &q) {
-	T e = q.front->elem; // Save lai gia tri first Node
-	Node *v = q.front; // Save lai address first node
-	if (q.size == 1) { // Chi co 1 nut
-		q.front = q.back = NULL; // Danh sach rong sau khi xoa
-	}
-	else {
-		q.front = q.front->next; // front = nut thu 2
-	}     
-	delete v; // xoa nut dau
-	q.size--; // Update size
-	return e;
-}
-// Is empty
-bool queueIsEmpty(Queue &q) {
-	return (q.size == 0);
-}
-// Destroy
-void queueDestroy(Queue &q) {
-	while (!queueIsEmpty(q)) {
-		dequeue(q);	
-	}
-}
 
-// Get size
-int queueGetSize(Queue &q) {
-	return q.size;
-}
-// Enter queue
+// Push (Enter queue)
 void enqueue(Queue &q, T e) {
 	Node *v = new Node;
 	
@@ -68,42 +40,92 @@ void enqueue(Queue &q, T e) {
 	q.size++; // Update size
 }
 
+// Delete first element of queue
+T dequeue(Queue &q) {
+	T e = q.front->elem; // Save lai gia tri first Node
+	Node *v = q.front; // Save lai address first node
+	if (q.size == 1) { // Neu chi co 1 nut
+		q.front = q.back = NULL; // Danh sach rong sau khi xoa
+	}
+	else {
+		q.front = q.front->next; // front = nut thu 2
+	}     
+	delete v; // xoa nut dau
+	q.size--; // Update size
+	return e;
+}
 
-void printQueue(Queue &q) {
-	Node *u = q.front; // dia chi thang cuoi
-	for(int i=0; i<q.size; i++) {
-		cout<<u -> elem;
-		u = u -> next;
+
+// Is empty
+bool queueIsEmpty(Queue &q) {
+	return (q.size == 0);
+}
+
+// Pop (Delete and print)
+void queuePop(Queue &q) {
+	while(!queueIsEmpty(q)) {
+		Node *old = q.front;
+		cout<<old->elem<<" ";
+		q.front = q.front->next;
+		delete old;
+		q.size--;
 	}
 }
 
-// YEU CAU THUC HANH
-//   2. Khai bao ham kiem tra xem mot gia tri x co trong hang doi hay khong
+// Destroy
+void queueDestroy(Queue &q) {
+	while (!queueIsEmpty(q)) {
+		dequeue(q);	
+	}
+}
 
-// VIET CODE CUA BAN O DAY
-// ...
+// Get size
+int queueGetSize(Queue &q) {
+	return q.size;
+}
+// Print
+void printQueue(Queue &q) {
+	Node *u = q.front; // dia chi thang first
+	for(int i=0; i<q.size; i++) {
+		cout<<u->elem<<" "; // <-> (*u).elem
+		u = u->next;
+	}
+}
+// Include
+bool queueInclude(Queue &q, T x) {
+	Node *u = q.front; // dia chi thang first
+	for(int i=0; i<q.size; i++) {
+		if(u->elem==x) { // <-> (*u).elem
+			return true;
+		}
+		u = u->next;
+	}
+	return 0;
+}
+
 
 int main() {
 	Queue q;
 	queueInit(q);
-	// Is Empty
+	// 1) Is Empty
 	queueIsEmpty(q) ? cout<<"Queue is empty" : cout<<"Queue does'nt empty";
-	// Push
+	// 2) Push
 	enqueue(q, 3);
 	enqueue(q, 5);
 	enqueue(q, 1);
 	enqueue(q, 2);
-	// Print
+	// 3) Print
+	cout<<"\nPrint: ";
 	printQueue(q);
-	//   4. Viet code nhap vao x roi kiem tra x co trong hang doi hay khong
-	//   5. Viet code rut tung phan tu ra khoi hang doi cho den khi hang doi rong
-	//   6. Viet code kiem tra xem hang doi da rong hay chua
+	// 4) Include
+	int x = 9;
+	queueInclude(q, x) ? cout<<"\nQueue include x\n" : cout<<"\nQueue does'nt include x\n";
+	// 5) Pop
+	cout<<"Pop: ";
+	queuePop(q);	
+	// 6) Is Empty
+	queueIsEmpty(q) ? cout<<"\nQueue is empty" : cout<<"\nQueue does'nt empty";
 	
 	queueDestroy(q);
-		
 	return 0;
 }
-
-// YEU CAU THUC HANH
-//   1. Dinh nghia ham in tat ca cac phan tu trong hang doi len man hinh
-//   2. Dinh nghia ham kiem tra xem mot gia tri x co trong hang doi hay khong

@@ -73,9 +73,9 @@ int main() {
 	};
 
 	void clistInit(CList &list); // Init: Giong ben tren
-	void clistDestroy(CList &list); // Destroy
-	bool clistIsEmpty(CList &list); // isEmty
-	T clistFront(CList &list); // get front
+	void clistDestroy(CList &list); // Destroy: Giong ben tren
+	bool clistIsEmpty(CList &list); // isEmty: Giong ben tren
+	T clistFront(CList &list); // get front: Giong ben tren
 	// get back
 	T clistBack(CList &list) {
 		
@@ -83,15 +83,29 @@ int main() {
 	void clistMoveNext(CList &list) {
 		
 	}
-	// Push
+	// Push front
 	void clistInsert(CList &list, T e) {
-		
+		CNode *v = new CNode;
+		v->elem = e; // Nut moi chua element moi
+		if (list.cursor == NULL) { //Neu rong 
+			v->next = v; // nut moi point to chinh no
+			list.cursor = v; // cursor point to nut moi
+		} 
+		else { 
+			v->next = list.cursor->next; // Nut moi point to first node
+			list.cursor->next = v; // cursor point to nut moi
+		}
 	}
-	// Pop
+	// Pop back
 	void clistRemove(CList &list) {
-		
+		CNode *old = list.cursor->next; //First node
+		if (old == cursor) {
+			cursor = NULL; 
+		}
+		else {
+			cursor->next = old->next;
+		}
+		delete old; 
 	}
-
-	
 	return 0;
 }
