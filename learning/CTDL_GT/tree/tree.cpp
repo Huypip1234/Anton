@@ -30,7 +30,7 @@ struct TreeNode { //Moi node trong cay chua:
 	T elem; //phan tu
 	TreeNode *firstChild; //Con tro toi first node
 	TreeNode *nextSibling; //Con tro toi next node
-}
+};
 
 // Duyet cay (dung de quy)
 // +) Duyet theo truoc (Duyet tu root luon)
@@ -46,7 +46,7 @@ struct BinaryNode { // Cay nhi phan
 	T elem; //phan tu
 	BinaryNode *left; //Con tro toi left node
 	BinaryNode *right; //Con tro toi right node
-}
+};
 
 // _____________________________________________
 
@@ -58,6 +58,6 @@ struct BinaryNode { // Cay nhi phan
 
 
 int main() {
-	
+	// a b + c d e + * *
 	return 0;
 }
