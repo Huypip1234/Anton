@@ -48,7 +48,7 @@ void bstDestroy(BinarySearchTree &tree) {
 bool bstIsEmpty(BinarySearchTree &tree) {
 	return (tree.root == NULL);
 }
-// Find min
+// Find min (Thang duoi cung ben trai)
 BinaryNode *bstFindMin(BinaryNode *t) {
 	if (t == NULL) { //Cay rong 
 		return NULL; 
@@ -62,7 +62,7 @@ T bstFindMin(BinarySearchTree &tree) {
 	BinaryNode *v = bstFindMin(tree.root); //Goi ham phu
 	return v->elem; //Get min element
 }
-// Find max
+// Find max (Thang duoi cung ben phai)
 BinaryNode *bstFindMax(BinaryNode *t) {
 	if (t != NULL) { //Khu de quy
 		while (t->right != NULL) { //right vi > hon left
@@ -112,6 +112,7 @@ void bstInsert(T x, BinaryNode *&t) {
 void bstInsert(BinarySearchTree &tree, T x) {
 	bstInsert(x, tree.root); //Goi ham phu
 }
+// Delete x
 void bstRemove(T x, BinaryNode * & t) {
 	if (t == NULL) return; // Cay rong -> thoat
 	if (x < t->elem) { // Neu x < gtri dang xet -> xoa o cay con trai
