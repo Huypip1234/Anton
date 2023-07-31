@@ -1,13 +1,39 @@
 #include <iostream>
 using namespace std;
 
+// Giai thich *& de hieu vcl:
+////Bien
+////1) truyen kieu con tro
+//void concac(int *root)
+//int root
+//concac(&root)
+//
+////2) Truyen kieu tham chieu
+//void concac(int &root)
+//int root
+//concac(root)
+////__________________________
+//
+////Con tro
+////1) truyen kieu con tro
+//void concac(int *(*root))
+//int *root
+//concac(&root)
+//
+////2) Truyen kieu tham chieu
+//void concac(int &(*root))
+//int *root
+//concac(root)
+
+
+
 struct node {	
 	int data;
 	node *left;
 	node *right;
 };
 //Insert
-void insert_tree(node *&root, int e) { 
+void insert_tree(node *&root, int e) { //1234556 -> //&root = 999999 -> //*&root = null
 	if (root == NULL) { 
 		root=new node;
 		root->data=e;
@@ -59,7 +85,7 @@ node *timkiem(node *&root, int x) {
 	}
 }
 // Get total node
-int sonut(node * & root){	
+int sonut(node *&root){	
 	if (root==NULL) {
 		return 0;
 	}
@@ -68,7 +94,7 @@ int sonut(node * & root){
 	}
 }	
 // Get total node la
-int sonutla(node * & root) {	
+int sonutla(node *&root) {	
 	if (root==NULL) {
 		return 0;
 	}
@@ -103,13 +129,44 @@ int sonutchadu(node *&root) {
 	}
 	else return sonutchadu(root->left);
 }
+
+// Get Height
+int heightOfTree(node *root) {
+  int h = 0;
+  if(root != NULL) {
+    int lHeight = heightOfTree(root->left);
+    int rHeight = heightOfTree(root->right);
+    int maxHeight = max(lHeight,rHeight);
+    h = maxHeight + 1;
+  }
+  return h;
+}
+
+// Delete Min (nut la ngoai cung ben trai)
+void deleteMin(node *&root) {
+	if(root->left==NULL) {
+		delete root;
+		root=NULL;
+	}
+	else deleteMin(root -> left);
+}
+
+// Delete Max (nut la ngoai cung ben phai)
+void deleteMax(node *&root) {
+	if(root->right==NULL) {
+		delete root;
+		root=NULL;
+	}
+	else deleteMax(root -> right);
+}
+
 int main() {
 	// Init
 	node *root; // con tro toi root
 	root = NULL; // init = null (chua tro toi dau)
 	
 	// 1) Insert node
-	insert_tree(root, 12);
+	insert_tree(root, 12); //Truyen vao con tro
 	insert_tree(root, 10);
 	insert_tree(root, 8);
 	insert_tree(root, 6);
@@ -153,9 +210,16 @@ int main() {
 	cout<<"Total node cha: "<<sonutchadu(root)<<'\n';
 	
 	// 7) Get height of tree
-	
+	cout<<"Height of tree: "<<heightOfTree(root)-1<<'\n';
 	// 8) Delete max, min node
-	
+	deleteMin(root);
+	cout<<"After delete min: ";
+	duyet_truoc(root);
+	cout<<'\n';
+	deleteMax(root);
+	cout<<"After delete max: ";
+	duyet_truoc(root);
+	cout<<'\n';
 	return 0;
 }
 

@@ -16,7 +16,7 @@ int main() {
 	// Point to other variable
 	// value: address of other variable
 	int number = 10; //Address: 6487572
-	int* p = &number; // & is refrence operator
+	int *p = &number; // & is refrence operator
 	// p: 6487572 (address of number) <-> &number
 	// *p: 10 (value of number)
 	// &p: 6487568 (address of p)
