@@ -29,6 +29,17 @@ int getIndex(string s) {
 	}
 }
 
+//int demCacPTuTrongBangBam() {
+//	int count=0;
+//	int index = hashFunc(s);
+//	while(hashTable[index] != "") {
+//		index = (index+1) % 27;
+//		count++;
+//	}
+//	return count;
+//}
+
+
 // Tham do bac 2: (i+k*k)%size (k=1, 2, 3,...)
 void insert2(string s) {
 	int index=hashFunc(s);
@@ -63,14 +74,15 @@ vector<string> hashTable2[27];
 
 
 int main() {
-	insert2("abcd");
-	insert2("bcef");
-	insert2("cabe");
-	insert2("caba");
-	insert2("aaba");
+	insert("abcd");
+	insert("bcef");
+	insert("cabe");
+	insert("caba");
+	insert("aaba");
 	
-	cout<<getIndex2("aaba");
+	//cout<<getIndex2("aaba");
 	//cout<<hashTable[4];
+	cout<<demCacPTuTrongBangBam();
 	return 0;
 }
 
