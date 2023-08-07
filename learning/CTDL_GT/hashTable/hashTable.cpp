@@ -1,6 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Sumary flow:
+// insert: "abc" -> hashFunc() -> insert "abc" in hashTable
+// get: "abc" -> hashFunc() -> get "abc" in hashTable
+
 string hashTable[27];
 
 int hashFunc(string s) {
@@ -28,17 +32,6 @@ int getIndex(string s) {
 		return -1;
 	}
 }
-
-//int demCacPTuTrongBangBam() {
-//	int count=0;
-//	int index = hashFunc(s);
-//	while(hashTable[index] != "") {
-//		index = (index+1) % 27;
-//		count++;
-//	}
-//	return count;
-//}
-
 
 // Tham do bac 2: (i+k*k)%size (k=1, 2, 3,...)
 void insert2(string s) {
@@ -81,8 +74,7 @@ int main() {
 	insert("aaba");
 	
 	//cout<<getIndex2("aaba");
-	//cout<<hashTable[4];
-	cout<<demCacPTuTrongBangBam();
+	cout<<hashTable[4];
 	return 0;
 }
 
