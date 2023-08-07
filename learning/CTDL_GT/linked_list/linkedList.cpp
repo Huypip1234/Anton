@@ -33,7 +33,7 @@ int main() {
 	}
 	// Get front element O(1)
 	T listFront(List &list) {
-	`	return list.head->elem; //gia tri first element
+		return list.head->elem; //gia tri first element
 	}
 	// Push front O(1)
 	void listPushFront(List &list, T e) {
