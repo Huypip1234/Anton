@@ -11,7 +11,7 @@ int hashFunc(string s) {
 	return (s[0]-'a'); //'a'-'a'=0, 'b'-'a'=1,...
 }
 
-// Tham do tuyen tinh: i+1
+// Tham do tuyen tinh: (i+1)%size
 void insert(string s) {
 	int index=hashFunc(s);
 	while(hashTable[index] != "") { //Bi dung do
