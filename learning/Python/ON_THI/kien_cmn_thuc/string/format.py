@@ -8,5 +8,5 @@ print('{:>10}'.format('aaaa')) #' aaaa'
 print('{:->10}'.format('aaaa')) #'------aaaa'
 # can trai, thay khoang trang = *: 
 print('{:*<10}'.format('aaaa')) #'aaa******'
-# căn gia, thay khoang trang = +: 
+# căn giua, thay khoang trang = +: 
 print('{:+^10}'.format('aaaa')) #'+++aaaa+++'
